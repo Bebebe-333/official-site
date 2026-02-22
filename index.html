@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Individual Management Sheet</title>
+    <!-- Fonts: Noto Serif JP for elegance, Helvetica for numbers/English -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Roboto:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Floating Action Bar (Screen Only) -->
+    <div class="action-bar no-print">
+        <div class="brand">IMS Creator</div>
+        <button id="btn-save" title="Save to Local Storage">💾 保存 (Save)</button>
+        <button id="btn-print" title="Print to A4">🖨️ 印刷 (Print)</button>
+    </div>
+
+    <!-- The A4 Sheet (Physical Paper Context) -->
+    <div class="sheet">
+
+        <!-- Header Area -->
+        <header class="sheet-header">
+            <h1 class="doc-title">Individual Management Sheet</h1>
+            <div class="doc-meta">
+                <div class="meta-row">
+                    <span class="meta-label">Date:</span>
+                    <input type="date" id="meta-date" class="meta-input">
+                </div>
+                <div class="meta-row">
+                    <span class="meta-label">Doc No:</span>
+                    <input type="text" id="meta-docno" class="meta-input" placeholder="IMS-2026-001">
+                </div>
+            </div>
+        </header>
+
+        <!-- Product Information (Fixed Grid) -->
+        <section class="product-info-section">
+            <h2 class="section-label">1. Product Information</h2>
+            <div class="product-grid">
+                <div class="p-cell">
+                    <span class="p-label">Products Name (Internal)</span>
+                    <input type="text" id="p-name-in" placeholder="Ex: PCB-Alpha-01">
+                </div>
+                <div class="p-cell">
+                    <span class="p-label">Products Name (Customer)</span>
+                    <input type="text" id="p-name-out" placeholder="Ex: Project X Board">
+                </div>
+                <div class="p-cell">
+                    <span class="p-label">Material / Thickness</span>
+                    <input type="text" id="p-material" placeholder="FR-4 / 1.6mm">
+                </div>
+                <div class="p-cell">
+                    <span class="p-label">Layer / Copper</span>
+                    <input type="text" id="p-spec" placeholder="4 Layer / 35µm">
+                </div>
+                <div class="p-cell full-width">
+                    <span class="p-label">Notes / Special Requirements</span>
+                    <textarea id="p-notes" rows="1"></textarea>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Flow (Strict 10x4 Grid) -->
+        <section class="process-section">
+            <h2 class="section-label">2. Process Flow (Standard 10 Steps)</h2>
+
+            <div class="process-table">
+                <!-- Header Row -->
+                <div class="pt-row pt-header">
+                    <div class="pt-col col-no">No.</div>
+                    <div class="pt-col col-process">Process Name</div>
+                    <div class="pt-col col-cond">Conditions / Spec</div>
+                    <div class="pt-col col-rem">Remarks</div>
+                </div>
+
+                <!-- Rows will be injected by JS, but visually we define the container 
+                     to strictly fill the remaining space -->
+                <div id="process-rows-container">
+                    <!-- JS will fill exactly 10 rows here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="sheet-footer">
+            <div class="footer-left">ISO-9001 Controlled Document</div>
+            <div class="footer-right">Page 1 of 1</div>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
